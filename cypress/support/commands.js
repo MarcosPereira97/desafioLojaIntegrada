@@ -1,25 +1,30 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+/// <reference types="cypress" />
+
+Cypress.Commands.add('accesingProduct', () => {
+    cy.get('.listagem-linha .listagem-item')
+        .first()
+        .click()
+})
+Cypress.Commands.add('addingProductToCart', () => {
+    cy.contains('a', 'Comprar')
+        .click()
+    cy.get('h1:contains(Carrinho)')
+        .should('be.visible')
+})
+Cypress.Commands.add('addCoupon', (cupons) => {
+    cy.get('#usarCupom')
+        .should('be.visible')
+        .type(cupons)
+    cy.get('#btn-cupom')
+        .click()
+})
+Cypress.Commands.add('validateCouponAlert', (txt) => {
+    cy.get('div[class*=alert-danger]')
+        .contains(txt)
+        .should('be.visible')
+})
+Cypress.Commands.add('validateCouponDescount', (txt) => {
+    cy.get('.cupom-valor')
+        .contains(txt)
+        .should('be.visible')
+})
