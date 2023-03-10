@@ -21,8 +21,11 @@ describe('Desafio Loja Integrada', () => {
 
             cy.accesingProduct()
             cy.addingProductToCart()
+            cy.addZip()
             cy.addCoupon(cupons.fretegratis)
             cy.validateCouponDescount('Frete Grátis')
+            cy.calcShipping()
+            
         })
         it('deve validar cupom 10off', () => {
             const cupons = listaCupom.cupom
@@ -30,9 +33,10 @@ describe('Desafio Loja Integrada', () => {
             cy.accesingProduct()
             cy.addingProductToCart()
             cy.addCoupon(cupons.dezoff)
+            cy.calcDiscount()
             cy.validateCouponDescount('Desconto: 10 %')
         })
-        it('deve validar cupom 30REAIS', () => {
+        it.only('deve validar cupom 30REAIS', () => {
             const cupons = listaCupom.cupom
 
             cy.accesingProduct()
