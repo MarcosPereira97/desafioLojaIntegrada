@@ -52,6 +52,11 @@ Para ativar a gravação de resultados do Allure, basta passar a variável de am
 yarn cypress open --env allure=true
 ```
 
+Para executar em modo headless executar o comando:
+```Bash
+yarn cypress run --env allure=true
+```
+
 ## Executando os testes
 
 Após tudo instalado e devidamente configurado basta rodar os comandos no terminal para executar os testes:
@@ -67,6 +72,8 @@ Para executar em modo headless execute o comando abaixo:
 ```Bash
 yarn cypress run
 ```
+
+## Abrindo o report
 
 Para visualizar o report do Allure, executar o comando abaixo, uma aba do navegador ira se abrir automaticamente com o report.
 
