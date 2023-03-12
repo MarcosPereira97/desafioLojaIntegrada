@@ -1,10 +1,10 @@
 # QA Store Desafio 
 
-#### Tecnologias:
+### Tecnologias:
 
-Framework: Cypress
+- Framework: Cypress
 
-Adicionais: [Allure-Reports](<https://github.com/Shelex/cypress-allure-plugin>)
+- Adicionais: [Allure-Reports](<https://github.com/Shelex/cypress-allure-plugin>)
 
 
 ## Instalação e Configuração 
