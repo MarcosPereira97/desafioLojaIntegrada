@@ -43,18 +43,19 @@ Cypress.Commands.add('calcShipping', () => {
         .invoke('text')
         .then(($value_1) => {
             const valorFrete = parseFloat($value_1.replace('R$', ''))
-            cy.log(`O valor do frete é: R$ ${valorFrete},00`)
             cy.get('strong[class*=valor-total]')
                 .should('be.visible')
                 .invoke('text')
                 .then(($value_2) => {
-                    const valorTotal = parseFloat($value_2.replace('R$', ''))
-                    cy.log(`O valor do total do carrinho é: R$ ${valorTotal},00`)
-                    cy.log(`Valor da soma: ${valorFrete + valorTotal},00`)
+                    const valorTotal = parseFloat($value_2.replace('R$', ''))            
+                    const resultado = (valorTotal - valorFrete)
+
+                    cy.get('.total > .titulo')
+                        .should('have.text', `R$ ${resultado},00`)
                 })
         })
 })
-Cypress.Commands.add('calcDiscount', () => {
+Cypress.Commands.add('calcPercentDiscount', () => {
     cy.get('.subtotal > .titulo')
         .should('be.visible')
         .invoke('text')
@@ -67,10 +68,33 @@ Cypress.Commands.add('calcDiscount', () => {
                 .then(($value_2) => {
                     const valorPorcentagem = parseFloat($value_2.replace(/\s+%/g, ''))
                     const descontoPorcentagem = ((valorPorcentagem / 100) * totalCarrinho)
-                    const resultadoCarrinho = (totalCarrinho - descontoPorcentagem)
+                    const resultado = (totalCarrinho - descontoPorcentagem)
 
-                    cy.log(`O valor total de desconto foi de: R$ ${resultadoCarrinho},00`)
+                    cy.get('.total > .titulo')
+                        .should('have.text', `R$ ${resultado},00`)
                 })
-        })
-})
 
+        })
+
+})
+Cypress.Commands.add('calcFixedDiscount', () => {
+    cy.get('.subtotal > .titulo')
+        .should('be.visible')
+        .invoke('text')
+        .then(($value_1) => {
+            const totalCarrinho = parseFloat($value_1.replace('R$', ''))
+
+            cy.get('strong[id=cupom_desconto]')
+                .should('be.visible')
+                .invoke('text')
+                .then(($value_2) => {
+                    const descontoFixo = parseFloat($value_2.replace('R$', ''))
+                    const resultado = (totalCarrinho - descontoFixo)
+
+                    cy.get('.total > .titulo')
+                        .should('have.text', `R$ ${resultado},00`)
+                })
+
+        })
+
+})

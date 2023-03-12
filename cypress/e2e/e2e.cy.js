@@ -33,15 +33,16 @@ describe('Desafio Loja Integrada', () => {
             cy.accesingProduct()
             cy.addingProductToCart()
             cy.addCoupon(cupons.dezoff)
-            cy.calcDiscount()
+            cy.calcPercentDiscount()
             cy.validateCouponDescount('Desconto: 10 %')
         })
-        it.only('deve validar cupom 30REAIS', () => {
+        it('deve validar cupom 30REAIS', () => {    
             const cupons = listaCupom.cupom
 
             cy.accesingProduct()
             cy.addingProductToCart()
             cy.addCoupon(cupons.trintareais)
+            cy.calcFixedDiscount()
             cy.validateCouponDescount('Desconto: R$ 30,00')
         })
         it('deve validar cupom 20LIMITADO', () => {
@@ -58,6 +59,7 @@ describe('Desafio Loja Integrada', () => {
             cy.accesingProduct()
             cy.addingProductToCart()
             cy.addCoupon(cupons.ajjflwbhh)
+            cy.calcPercentDiscount()
             cy.validateCouponDescount('Desconto: 5 %')
         })
         it('deve validar cupom CUPOMVENCIDO', () => {
