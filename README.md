@@ -4,7 +4,7 @@
 
 Framework: Cypress
 
-Adicionais: [Allure-Reports](<https://github.com/Shelex/cypress-allure-plugin>), [Faker.js](https://fakerjs.dev>)
+Adicionais: [Allure-Reports](<https://github.com/Shelex/cypress-allure-plugin>)
 
 
 ## Instalação e Configuração 
