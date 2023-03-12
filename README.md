@@ -1,6 +1,6 @@
 # QA Store Desafio 
 
-### Tecnologias:
+### Tecnologias
 
 - Framework: Cypress
 
