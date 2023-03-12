@@ -1,14 +1,6 @@
 {
-  "name": "desafioLojaIntegrada",
-  "version": "1.0.0",
-  "description": "Desafio QA Loja Integrada",
-  "main": "index.js",
-  "author": "Marcos Pereira",
-  "license": "MIT",
   "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.35.2",
     "cypress": "^12.7.0"
-  },
-  "dependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^15.1.4"
   }
 }
